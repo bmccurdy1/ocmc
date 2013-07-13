@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="com.ocmc.ws.services" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="PriorityService" targetNamespace="com.ocmc.ws.services">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="com.ocmc.ws.services" xmlns:ns1="com.ocmc.ws.beans" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="com.ocmc.ws.services">
+  <xs:import namespace="com.ocmc.ws.beans"/>
+  <xs:element name="AddPriority" type="tns:AddPriority"/>
+  <xs:element name="AddPriorityResponse" type="tns:AddPriorityResponse"/>
+  <xs:element name="GetAllPriorities" type="tns:GetAllPriorities"/>
+  <xs:element name="GetAllPrioritiesResponse" type="tns:GetAllPrioritiesResponse"/>
+  <xs:element name="GetPriority" type="tns:GetPriority"/>
+  <xs:element name="GetPriorityResponse" type="tns:GetPriorityResponse"/>
+  <xs:element name="PriorityCollection" type="ns1:PriorityCollectionType"/>
+  <xs:element name="UpdatePriority" type="tns:UpdatePriority"/>
+  <xs:element name="UpdatePriorityResponse" type="tns:UpdatePriorityResponse"/>
+  <xs:complexType name="GetPriority">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetPriorityResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="priority" type="ns1:PriorityType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AddPriority">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="priority" type="ns1:PriorityType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AddPriorityResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UpdatePriority">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="priority" type="ns1:PriorityType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UpdatePriorityResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="GetAllPriorities">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="GetAllPrioritiesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:PriorityCollectionType"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="com.ocmc.ws.beans" version="1.0">
+<xs:complexType name="PriorityType">
+    <xs:sequence>
+      <xs:element name="priorityID" type="xs:int"/>
+      <xs:element minOccurs="0" name="priorityName" type="xs:string"/>
+      <xs:element minOccurs="0" name="priorityDesc" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PriorityCollectionType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="priorities">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="priority" type="xs:anyType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="UpdatePriorityResponse">
+    <wsdl:part element="tns:UpdatePriorityResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAllPrioritiesResponse">
+    <wsdl:part element="tns:GetAllPrioritiesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPriority">
+    <wsdl:part element="tns:GetPriority" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAllPriorities">
+    <wsdl:part element="tns:GetAllPriorities" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdatePriority">
+    <wsdl:part element="tns:UpdatePriority" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPriorityResponse">
+    <wsdl:part element="tns:AddPriorityResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPriority">
+    <wsdl:part element="tns:AddPriority" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPriorityResponse">
+    <wsdl:part element="tns:GetPriorityResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PriorityService">
+    <wsdl:operation name="GetPriority">
+      <wsdl:input message="tns:GetPriority" name="GetPriority">
+    </wsdl:input>
+      <wsdl:output message="tns:GetPriorityResponse" name="GetPriorityResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPriority">
+      <wsdl:input message="tns:AddPriority" name="AddPriority">
+    </wsdl:input>
+      <wsdl:output message="tns:AddPriorityResponse" name="AddPriorityResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePriority">
+      <wsdl:input message="tns:UpdatePriority" name="UpdatePriority">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdatePriorityResponse" name="UpdatePriorityResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPriorities">
+      <wsdl:input message="tns:GetAllPriorities" name="GetAllPriorities">
+    </wsdl:input>
+      <wsdl:output message="tns:GetAllPrioritiesResponse" name="GetAllPrioritiesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PriorityServiceSoapBinding" type="tns:PriorityService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetPriority">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="GetPriority">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetPriorityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPriority">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="AddPriority">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddPriorityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPriorities">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="GetAllPriorities">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAllPrioritiesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePriority">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="UpdatePriority">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdatePriorityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PriorityService">
+    <wsdl:port binding="tns:PriorityServiceSoapBinding" name="PriorityServiceImplPort">
+      <soap:address location="http://localhost:8080/ocmc-ws-0.0.1-POC/priorityservice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
